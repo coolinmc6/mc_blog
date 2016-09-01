@@ -264,6 +264,18 @@ has_many :comments
 # new version
 has_many :comments, dependent: :destroy
 ```
+####59:00 - Pages Controller
+```shell
+rails g controller pages
+```
+* We want to create an About page so we create an 'about' action and update the routes.rb file:
+```ruby
+get '/about', to: 'pages#about'
+```
+  * What this does is allow us to simply go to /about and not /pages/about.  Notice the syntax...I need to learn this.
+  * If we try to go to /about, it fails because we do not yet have a template...
+
+
 
 
 
