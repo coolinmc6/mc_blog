@@ -84,7 +84,7 @@ more to it than that...
   * as a security feature, Rails require that we specify the parameters that we are updating in something called "strong
 parameters"
   * strong parameters are defined in the Post controller (posts_controller.rb) and are 'private' meaning that they [FILL IN]
-*this is what the create and strong parameters look like:
+* this is what the create and strong parameters look like:
 ```ruby
 def create
 	@post = Post.new(post_params)
@@ -140,6 +140,10 @@ the date in Ruby...I need to learn it:
 ```
 * We still can't edit or delete yet
 
+####~19:45 - Styling
+```shell
+git checkout -b styling
+```
 
 
 
