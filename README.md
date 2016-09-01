@@ -142,7 +142,18 @@ the date in Ruby...I need to learn it:
 
 ####~19:45 - Styling
 ```shell
-git checkout -b styling
+git checkout -b styling_v2
+```
+* We brought in basic styling
+* Notice how we import the normalize partial in the application.scss file
+```css
+@import 'normalize';
+```
+
+####~28:40
+* Google fonts in Rails:
+```html
+<%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
 ```
 
 
