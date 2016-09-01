@@ -211,5 +211,69 @@ def destroy
 	redirect_to root
 end
 ```
+* This is how he deleted a post and I must break into:
+```ruby
+<%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: "Are you sure?"} %>
+```
+* This was located in the show.html.erb (so when you go into a particular post) and I need to learn what each of 
+these things are. 
+
+####~47:15 - Add Comments
+```shell
+rails g model Comment name:string body:text post:references
+rails db:migrate
+```
+* This is what I am doing:
+  * I am generating a model called Comment
+  * It has a column called 'name' (string) and a column called 'body' (text)
+  * It belongs_to Post.  Again...what this means is that Rails automatically puts that line in there:
+```ruby
+class Comment < ApplicationRecord
+		belongs_to :post
+end
+```
+  * Rails does NOT add the corresponding line into the post.rb file (the Post model)
+```ruby
+class Post < ApplicationRecord
+	has_many :comments
+	validates :title, presence: true, length: { minimum: 5}
+	validates :body, presence: true
+end
+```
+  * And lastly, because it created a migration, we run 'rails db:migrate'
+
+* We then have to update the config/routes.rb file to make nested routes:
+```ruby
+resources :posts do 
+	resources :comments
+end
+```
+* Generate Comments controller
+```shell
+rails g controller Comments
+```
+* Write the create action in the Comments controller
+
+####58:00
+* By this time we have created the _comment and _form partials (in the views/comments folder)
+* We have written the destroy action for Comments
+* And we now need to make it so that when a Post is destroyed, the associated comments are destroyed as well.  That can be done quite easily by doing the following:
+```ruby
+# old version
+has_many :comments
+# new version
+has_many :comments, dependent: :destroy
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
