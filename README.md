@@ -156,8 +156,41 @@ git checkout -b styling_v2
 <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
 ```
 
+####~35:00 - Validations
+```shell
+git checkout -b validations
+```
+* Although I would like to explain these validations out later, here is the validations for the Post model:
+```ruby
+class Post < ApplicationRecord
+	validates :title, presence: true, length: { minimum: 5}
+	validates :body, presence: true
+end
+```
+* We also updated the posts_controller.rb.  First, we updated the new action which was blank and then updated the
+create action.  Here is the new code:
+```ruby
+def new
+	@post = Post.new
+end
 
+def create
+	@post = Post.new(post_params)
 
+	if @post.save
+		redirect_to @post
+	else
+		render 'new'
+	end
+end
+```
+* We updated the create action with an if-statement.  This is what is happening:
+  1. if @post.save is successful (it successfully saves to the database), then redirect to the post they just wrote
+    * this is important because we added validations to the post model that requires a title length minimum of 5
+    and the body must have something there.
+  2. if @post.save is unsucessful (it fails one of the validations and CANNOT be saved to the database), we are are
+  going to *render* 'new'.  
+    * This is important because it saves the person's data, it allows them to avoid re-doing an entire post
 
 
 
