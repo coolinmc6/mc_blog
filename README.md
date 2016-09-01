@@ -275,8 +275,25 @@ get '/about', to: 'pages#about'
   * What this does is allow us to simply go to /about and not /pages/about.  Notice the syntax...I need to learn this.
   * If we try to go to /about, it fails because we do not yet have a template...
 
-
-
+####1:03:00 - Add Users
+* Revisit this, we add the Devise gem here
+```shell
+rails g devise:install
+```
+```shell
+rails g devise:views
+```
+```shell
+rails g devise User
+rails db:migrate
+```
+* He hides a lot of buttons using the if-user-is-signed-in logic as follows: 
+```ruby
+<% if user_signed_in? %>
+	| <%= link_to 'Edit', edit_post_path(@post) %>
+	| <%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: "Are you sure?"} %>
+<% end %>
+```
 
 
 
