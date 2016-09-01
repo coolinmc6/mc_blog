@@ -81,9 +81,9 @@ rails g model Post title:string body:text
 - In order to save our posts, we have to define a 'create' method
 - A 'create' method pretty much has to just create the post (@post = Post.new) and save it (@post.save).  BUT....there's
 more to it than that...
-  -as a security feature, Rails require that we specify the parameters that we are updating in something called "strong
+  * as a security feature, Rails require that we specify the parameters that we are updating in something called "strong
 parameters"
-  -strong parameters are defined in the Post controller (posts_controller.rb) and are 'private' meaning that they [FILL IN]
+  * strong parameters are defined in the Post controller (posts_controller.rb) and are 'private' meaning that they [FILL IN]
 *this is what the create and strong parameters look like:
 ```ruby
 def create
@@ -103,7 +103,7 @@ private
 - After completing the above steps, when we try to create a new post, we get this error: **The action 'show' could 
 not be found for PostsController**.  And why is that?  We have told the application in the 'create' action
 to redirect the user to '@post' which means that we want to *show* them the post.
-  -...I believe this is where Rails is actively looking for the 'show' view
+  *...I believe this is where Rails is actively looking for the 'show' view
 - So we *should* have two next steps: build a 'show' action and 'show' template
 
 ####~15:00
@@ -115,16 +115,16 @@ def show
 	@post = Post.find(params[:id])
 end
 ```
-*If ever struggling as to what you want the action to do, just think about for a minute.  What am I trying to
+- If ever struggling as to what you want the action to do, just think about for a minute.  What am I trying to
 accomplish with the 'show' method?  I want to *show* the user their new post.  And how do I do that? I search
 the database for a post with the given id.
-..*I need to learn more about the params[:id] in Rails
+  * I need to learn more about the params[:id] in Rails
 
 ####~16:00
-*At this point, as much I want to clean-up the view and add a link to go back, what would I be going back to?
+* At this point, as much I want to clean-up the view and add a link to go back, what would I be going back to?
 Right now, nothing is set-up to show ALL the posts...so I need to create a way to show all posts. 
-..*and to start, we need to update our 'index' action
-..*and display everything in reverse order
+  *and to start, we need to update our 'index' action
+  *and display everything in reverse order
 
 ```ruby
 def index
@@ -133,12 +133,12 @@ end
 ```
 
 ####~18:45
-*At this point, I can create posts, I can view all of them, and I can view individual ones.  Notice the code to show
+* At this point, I can create posts, I can view all of them, and I can view individual ones.  Notice the code to show
 the date in Ruby...I need to learn it:
 ```ruby
 <%= post.created_at.strftime("%b %d, %Y") %>
 ```
-*We still can't edit or delete yet
+* We still can't edit or delete yet
 
 
 
