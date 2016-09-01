@@ -192,5 +192,24 @@ end
   going to *render* 'new'.  
     * This is important because it saves the person's data, it allows them to avoid re-doing an entire post
 
+####~40:50
+* Update posts_controller.rb
+* How does the update action work?  Why is it params[:post]?
+
+####~42:30
+* Good spot to see how he removes most of the show.html.erb file and puts it into a partial _form.html.erb
+
+
+####~44:20 - Add Delete action
+
+
+```ruby
+def destroy
+	@post = Post.find(params[:id])
+	@post.destroy
+
+	redirect_to root
+end
+```
 
 
