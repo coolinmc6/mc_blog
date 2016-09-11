@@ -295,6 +295,10 @@ rails db:migrate
 <% end %>
 ```
 
+* This is how I logout:
+```html
+<button class="button"><%= link_to "Logout", destroy_user_session_path, method: :delete %></button>
+```
 
 
 
